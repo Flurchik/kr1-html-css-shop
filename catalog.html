@@ -1,122 +1,359 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Каталог товаров учебного интернет-магазина.">
-        <title>Каталог товаров — Учебный интернет-магазин</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <header>
-            <div class="site-header">
-                <a class="site-logo" href="index.html">ShopProject</a>
-                <nav class="site-nav" aria-label="Основная навигация">
-                    <ul class="site-nav__list">
-                        <li><a href="index.html">Главная</a></li>
-                        <li><a href="catalog.html">Каталог</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
-                        <li><a href="index.html#advantages">Преимущества</a></li>
-                        <li><a href="index.html#popular">Популярные товары</a></li>
-                        <li><a href="index.html#contacts">Обратная связь</a></li>
-                    </ul>
-                </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Каталог товаров учебного интернет-магазина: компьютеры, комплектующие, периферия и аксессуары.">
+  <title>Каталог товаров — Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body id="top">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html">Главная</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="product.html">Товар</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="order.html">Оформить заказ</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="contacts.html">Контакты</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__current">Каталог</span>
+    </nav>
+
+    <section class="section">
+      <h1>Каталог товаров</h1>
+      <p>
+        В нашем каталоге представлены популярные товары для учёбы и разработки.
+        Используйте боковой фильтр для быстрого подбора по параметрам и стоимости.
+      </p>
+    </section>
+
+    <!-- Сетка каталога (CSS Grid): левая колонка — sticky-фильтр, правая — список товаров -->
+    <section class="catalog-layout">
+      <aside class="catalog-filters">
+        <h2>Фильтры</h2>
+
+        <form class="filters-form" action="#" method="get">
+          <fieldset>
+            <legend>Жанры игр</legend>
+            <label>
+              <input type="checkbox" name="category" value="all" checked>
+              Все игры
+            </label>
+            <label>
+              <input type="checkbox" name="category" value="action-rpg">
+              Экшен-RPG
+            </label>
+            <label>
+              <input type="checkbox" name="category" value="sandbox">
+              Песочницы
+            </label>
+            <label>
+              <input type="checkbox" name="category" value="open-world">
+              Открытый мир
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Цена (руб.)</legend>
+            <label for="price-from">От</label>
+            <input id="price-from" name="price-from" type="number" min="0" placeholder="300">
+
+            <label for="price-to">До</label>
+            <input id="price-to" name="price-to" type="number" min="0" placeholder="3000">
+          </fieldset>
+
+          <fieldset>
+            <legend>Наличие</legend>
+            <label>
+              <input type="checkbox" name="in_stock" checked>
+              В наличии на складе
+            </label>
+            <label>
+              <input type="checkbox" name="discount_only">
+              Только со скидкой
+            </label>
+          </fieldset>
+
+          <div class="filters-form__actions">
+            <button class="button button--primary" type="submit">Применить</button>
+            <button class="button button--secondary" type="reset">Сбросить</button>
+          </div>
+        </form>
+      </aside>
+
+      <section class="catalog-products">
+        <h2>Список товаров</h2>
+
+        <div class="products-grid">
+          <!-- Карточка 1: Minecraft Dungeons (модификатор product-card--featured) -->
+          <article class="product-card product-card--featured">
+            <span class="product-card__badge product-card__badge--hit">Хит</span>
+            <div class="product-card__image-wrapper">
+              <img class="product-card__image" src="images/minecraft.jpg" alt="Minecraft Dungeons" width="300" height="180" loading="lazy">
             </div>
-        </header>
+            <h3 class="product-card__title">Minecraft Dungeons</h3>
+            <p class="product-card__description">Экшен-RPG во вселенной Minecraft: зачистка подземелий, артефакты и кооператив.</p>
+            <div class="product-card__price-box">
+              <p class="product-card__price">1 990 руб.</p>
+              <span class="product-card__old-price">2 490 руб.</span>
+            </div>
+            <div class="product-card__actions">
+              <a class="button button--secondary product-card__button" href="product.html">Подробнее</a>
+              <button class="button button--primary product-card__button" type="button" data-product="Minecraft Dungeons">
+                Заказать
+              </button>
+            </div>
+          </article>
 
+          <!-- Карточка 2: Terraria (модификатор product-card--discount) -->
+          <article class="product-card product-card--discount">
+            <span class="product-card__badge product-card__badge--discount">Скидка -20%</span>
+            <div class="product-card__image-wrapper">
+              <img class="product-card__image" src="images/terraria.jpg" alt="Terraria" width="300" height="180" loading="lazy">
+            </div>
+            <h3 class="product-card__title">Terraria</h3>
+            <p class="product-card__description">Приключенческая 2D-песочница с крафтом, боссами и сетевой игрой.</p>
+            <div class="product-card__price-box">
+              <p class="product-card__price product-card__price--discount">349 руб.</p>
+              <span class="product-card__old-price">435 руб.</span>
+            </div>
+            <div class="product-card__actions">
+              <a class="button button--secondary product-card__button" href="product.html">Подробнее</a>
+              <button class="button button--primary product-card__button" type="button" data-product="Terraria">
+                Заказать
+              </button>
+            </div>
+          </article>
 
-        <main>
-            <nav class="breadcrumbs" aria-label="Хлебные крошки">
-                <a href="index.html">Главная</a>
-                <span>Каталог</span>
-            </nav>
+          <!-- Карточка 3: GTA 5 (модификатор product-card--new) -->
+          <article class="product-card product-card--new">
+            <span class="product-card__badge product-card__badge--new">Новинка</span>
+            <div class="product-card__image-wrapper">
+              <img class="product-card__image" src="images/gta5.jpg" alt="Grand Theft Auto V" width="300" height="180" loading="lazy">
+            </div>
+            <h3 class="product-card__title">Grand Theft Auto V</h3>
+            <p class="product-card__description">Культовый экшен в открытом мире Лос-Сантоса с доступом к GTA Online.</p>
+            <div class="product-card__price-box">
+              <p class="product-card__price">1 490 руб.</p>
+            </div>
+            <div class="product-card__actions">
+              <a class="button button--secondary product-card__button" href="product.html">Подробнее</a>
+              <button class="button button--primary product-card__button" type="button" data-product="Grand Theft Auto V">
+                Заказать
+              </button>
+            </div>
+          </article>
 
-            <section class="section">
-                <h1>Каталог товаров</h1>
-                <p>
-                    На этой странице предоставлен учебный каталог товаров.
-                    В дальнейшем здесь будут добавлены фильтры, сортировка и более подробные карточки.
-                </p>
-            </section>
+          <!-- Карточка 4: Ведьмак 3 (модификатор product-card--featured) -->
+          <article class="product-card product-card--featured">
+            <span class="product-card__badge product-card__badge--hit">Хит</span>
+            <div class="product-card__image-wrapper">
+              <img class="product-card__image" src="images/witcher3.jpg" alt="Ведьмак 3: Дикая Охота" width="300" height="180" loading="lazy">
+            </div>
+            <h3 class="product-card__title">Ведьмак 3: Дикая Охота</h3>
+            <p class="product-card__description">Масштабная ролевая игра о ведьмаке Геральте со всеми дополнениями (GOTY).</p>
+            <div class="product-card__price-box">
+              <p class="product-card__price">890 руб.</p>
+              <span class="product-card__old-price">1 190 руб.</span>
+            </div>
+            <div class="product-card__actions">
+              <a class="button button--secondary product-card__button" href="product.html">Подробнее</a>
+              <button class="button button--primary product-card__button" type="button" data-product="Ведьмак 3: Дикая Охота">
+                Заказать
+              </button>
+            </div>
+          </article>
 
-            <section class="catalog-layout">
-                <aside class="catalog-filters">
-                    <h2>Фильтры</h2>
+          <!-- Карточка 5: Cyberpunk 2077 (модификатор product-card--discount) -->
+          <article class="product-card product-card--discount">
+            <span class="product-card__badge product-card__badge--discount">Скидка -25%</span>
+            <div class="product-card__image-wrapper">
+              <img class="product-card__image" src="images/cyberpunk.jpg" alt="Cyberpunk 2077" width="300" height="180" loading="lazy">
+            </div>
+            <h3 class="product-card__title">Cyberpunk 2077</h3>
+            <p class="product-card__description">Приключенческая ролевая игра в футуристическом мегаполисе Найт-Сити.</p>
+            <div class="product-card__price-box">
+              <p class="product-card__price product-card__price--discount">2 190 руб.</p>
+              <span class="product-card__old-price">2 990 руб.</span>
+            </div>
+            <div class="product-card__actions">
+              <a class="button button--secondary product-card__button" href="product.html">Подробнее</a>
+              <button class="button button--primary product-card__button" type="button" data-product="Cyberpunk 2077">
+                Заказать
+              </button>
+            </div>
+          </article>
 
-                    <form class="filters-form" action="#" method="get">
-                        <fieldset>
-                            <legend>Категория</legend>
+          <!-- Карточка 6: Hollow Knight (модификатор product-card--new) -->
+          <article class="product-card product-card--new">
+            <span class="product-card__badge product-card__badge--new">Новинка</span>
+            <div class="product-card__image-wrapper">
+              <img class="product-card__image" src="images/hollowknight.jpg" alt="Hollow Knight" width="300" height="180" loading="lazy">
+            </div>
+            <h3 class="product-card__title">Hollow Knight</h3>
+            <p class="product-card__description">Атмосферная метроидвания о путешествии по заброшенному королевству жуков.</p>
+            <div class="product-card__price-box">
+              <p class="product-card__price">550 руб.</p>
+            </div>
+            <div class="product-card__actions">
+              <a class="button button--secondary product-card__button" href="product.html">Подробнее</a>
+              <button class="button button--primary product-card__button" type="button" data-product="Hollow Knight">
+                Заказать
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
 
-                            <label>
-                                <input type="checkbox" name="category" value="all">
-                                Все товары
-                            </label>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+      <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
+  </footer>
 
-                            <label>
-                                <input type="checkbox" name="category" value="popular">
-                                Популярные
-                            </label>
+  <!-- Модальное окно оформления заявки -->
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <div class="order-dialog__header">
+      <div>
+        <h2 class="order-dialog__title" id="order-dialog-title">Быстрое оформление покупки</h2>
+        <p class="order-dialog__subtitle">
+          Выбранная игра:
+          <span class="order-dialog__product-badge" id="dialog-product-name">Minecraft Dungeons</span>
+        </p>
+      </div>
+      <button class="order-dialog__close" type="button" aria-label="Закрыть окно">&times;</button>
+    </div>
 
-                            <label>
-                                <input type="checkbox" name="category" value="new">
-                                Новинки
-                            </label>
+    <form class="order-form" id="order-form" action="#" method="post" novalidate>
+      <input id="selected-product" name="selected-product" type="hidden" value="Minecraft Dungeons">
 
-                            <label>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-name">Ваше имя *</label>
+        <input
+          class="order-form__input"
+          id="order-name"
+          name="name"
+          type="text"
+          placeholder="Введите ваше имя"
+          minlength="2"
+          autocomplete="given-name"
+          aria-required="true"
+          required
+        >
+      </div>
 
-                        </fieldset>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-email">E-mail для получения ключа *</label>
+        <input
+          class="order-form__input"
+          id="order-email"
+          name="email"
+          type="email"
+          placeholder="your-email@mail.ru"
+          autocomplete="email"
+          aria-describedby="order-email-help"
+          aria-required="true"
+          required
+        >
+        <small class="order-form__help" id="order-email-help">На этот адрес придёт лицензионный ключ активации</small>
+      </div>
 
-                        <fieldset>
-                            <legend>Цена</legend>
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-phone">Номер телефона *</label>
+        <input
+          class="order-form__input"
+          id="order-phone"
+          name="phone"
+          type="tel"
+          inputmode="tel"
+          placeholder="+7 (900) 000-00-00"
+          pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+          aria-describedby="order-phone-help"
+          aria-required="true"
+          required
+        >
+        <small class="order-form__help" id="order-phone-help">Формат: +7 (900) 000-00-00</small>
+      </div>
 
-                            <label for="price-from">От</label>
-                            <input id="price-from" name="price-from" type="number" min="0" placeholder="0">
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-topic">Способ оплаты</label>
+        <select class="order-form__select" id="order-topic" name="topic" required>
+          <option value="sbp" selected>Система быстрых платежей (СБП)</option>
+          <option value="card">Банковская карта (МИР / Visa / MC)</option>
+          <option value="wallet">Электронный кошелёк</option>
+        </select>
+      </div>
 
-                            <label for="price-to">От</label>
-                            <input id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+      <div class="order-form__field">
+        <label class="order-form__label" for="order-comment">Комментарий к заказу</label>
+        <textarea
+          class="order-form__textarea"
+          id="order-comment"
+          name="comment"
+          rows="3"
+          placeholder="Укажите никнейм или промокод, если есть"
+        ></textarea>
+      </div>
 
-                        </fieldset>
-                        
-                        <button class="button" type="submit">Применить</button>
-                    </form>
-                </aside>
+      <div class="order-form__field order-form__field--checkbox">
+        <label>
+          <input
+            class="order-form__checkbox"
+            id="order-agreement"
+            name="agreement"
+            type="checkbox"
+            aria-required="true"
+            required
+          >
+          Согласен с правилами предоставления услуг и обработки данных *
+        </label>
+      </div>
 
-                <section class="catalog-products">
-                    <h2>Список товаров</h2>
+      <div class="order-form__actions">
+        <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button button--primary" type="submit">Получить ключ</button>
+      </div>
+    </form>
+  </dialog>
 
-                    <div class="products-grid">
-                        <article class="product-card">
-                            <h3>Товар 1</h3>
-                            <p>Краткое описание учебного товара.</p>
-                            <p>Цена: 1000 руб.</p>
-                            <a class="button" href="index.html#popular">Подробнее</a>
-                        </article>
-                        
-                        <article class="product-card">
-                            <h3>Товар 2</h3>
-                            <p>Краткое описание учебного товара.</p>
-                            <p>Цена: 1500 руб.</p>
-                            <a class="button" href="index.html#popular">Подробнее</a>
-                        </article>
-                        
-                        <article class="product-card">
-                            <h3>Товар 3</h3>
-                            <p>Краткое описание учебного товара.</p>
-                            <p>Цена: 2000 руб.</p>
-                            <a class="button" href="index.html#popular">Подробнее</a>
-                        </article>
-                    </div>
+  <p class="success-message" id="success-message" hidden>
+    Форма успешно отправлена! Наш специалист свяжется с вами.
+  </p>
 
-                </section>
-
-            </section>
-
-            
-        </main>
-
-        <footer>
-            <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-            <p>Дисциплина: Фронтенл и бэкенд разработка</p>
-        </footer>
-    </body>
+  <!-- Фиксированная кнопка «Наверх» -->
+  <a class="scroll-top" href="#top" aria-label="Вернуться к началу страницы" title="Наверх">↑</a>
+</body>
 </html>

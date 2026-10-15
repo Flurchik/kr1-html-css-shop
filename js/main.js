@@ -1,74 +1,140 @@
-// Получаем модальное окно по id.
+// Получаем элементы модального окна
 const orderDialog = document.getElementById('order-dialog');
-
-// Получаем все кнопки заказа в карточках товаров.
-const orderButtons = document.querySelectorAll('.product-card__button');
-
-// Получаем кнопку закрытия модального окна.
-const closeDialogButton = document.getElementById('close-order-dialog');
-
-// Получаем скрытое поле, в которое будет записан выбранный товар.
+const dialogProductName = document.getElementById('dialog-product-name');
 const selectedProductInput = document.getElementById('selected-product');
 
-// Перебираем все кнопки «Заказать».
-orderButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    // Получаем название товара из data-атрибута.
-    const productName = button.dataset.product;
+// Получаем кнопки вызова модального окна (только кнопки «Заказать», не ссылки)
+const orderButtons = document.querySelectorAll('button[data-product], button.product-card__button');
 
-    // Записываем название товара в скрытое поле формы.
-    selectedProductInput.value = productName;
+// Получаем кнопки закрытия (кнопка внизу и крестик в правом верхнем углу)
+const closeDialogButtons = document.querySelectorAll('#close-order-dialog, .order-dialog__close');
 
-    // Открываем модальное окно.
-    orderDialog.showModal();
+// Инициализация кнопок открытия диалога
+if (orderButtons.length > 0) {
+  orderButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const productName = button.dataset.product;
+
+      // Записываем выбранный товар в скрытое поле
+      if (selectedProductInput && productName) {
+        selectedProductInput.value = productName;
+      }
+
+      // Обновляем визуальный бейдж товара в шапке модалки
+      if (dialogProductName && productName) {
+        dialogProductName.textContent = productName;
+      }
+
+      // Открываем модальное окно
+      if (orderDialog && typeof orderDialog.showModal === 'function') {
+        orderDialog.showModal();
+      }
+    });
   });
-});
+}
 
-// Закрываем модальное окно по кнопке «Закрыть».
-closeDialogButton.addEventListener('click', () => {
-  orderDialog.close();
-});
+// Закрытие модального окна по кнопкам
+if (closeDialogButtons.length > 0 && orderDialog) {
+  closeDialogButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      orderDialog.close();
+    });
+  });
+}
 
-// Получаем форму заявки.
-const orderForm = document.getElementById('order-form');
+// Закрытие модального окна по клику на оверлей (backdrop)
+if (orderDialog) {
+  orderDialog.addEventListener('click', (event) => {
+    const rect = orderDialog.getBoundingClientRect();
+    const isInDialog = (
+      rect.top <= event.clientY &&
+      event.clientY <= rect.top + rect.height &&
+      rect.left <= event.clientX &&
+      event.clientX <= rect.left + rect.width
+    );
+    if (!isInDialog) {
+      orderDialog.close();
+    }
+  });
+}
 
-// Получаем сообщение об успешной отправке.
+// Обработка форм и клиентская валидация
+const forms = document.querySelectorAll('.order-form');
 const successMessage = document.getElementById('success-message');
 
-// Обрабатываем отправку формы.
-orderForm.addEventListener('submit', (event) => {
-  // Отменяем стандартную отправку формы,
-  // потому что backend пока не подключён.
-  event.preventDefault();
+forms.forEach((form) => {
+  const formElements = Array.from(form.elements);
 
-  // Сбрасываем предыдущие признаки ошибок.
-  const formElements = Array.from(orderForm.elements);
-
+  // Снятие подсветки ошибки сразу при вводе правильных данных
   formElements.forEach((element) => {
     if (element.willValidate) {
-      element.removeAttribute('aria-invalid');
+      element.addEventListener('input', () => {
+        if (element.checkValidity()) {
+          element.removeAttribute('aria-invalid');
+        }
+      });
     }
   });
 
-  // Проверяем встроенные HTML-ограничения формы.
-  if (!orderForm.checkValidity()) {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    // Сбрасываем предыдущие ошибки
     formElements.forEach((element) => {
-      if (element.willValidate && !element.checkValidity()) {
-        element.setAttribute('aria-invalid', 'true');
+      if (element.willValidate) {
+        element.removeAttribute('aria-invalid');
       }
     });
 
-    // Показываем стандартные сообщения браузера.
-    orderForm.reportValidity();
-    return;
-  }
+    // Валидация полей
+    if (!form.checkValidity()) {
+      formElements.forEach((element) => {
+        if (element.willValidate && !element.checkValidity()) {
+          element.setAttribute('aria-invalid', 'true');
+        }
+      });
+      form.reportValidity();
+      return;
+    }
 
-  // Показываем сообщение об успешной отправке.
-  successMessage.hidden = false;
+    // Успешная отправка
+    form.reset();
 
-  // Очищаем форму.
-  orderForm.reset();
+    // Закрываем модалку, если отправка шла из неё
+    if (orderDialog && orderDialog.open) {
+      orderDialog.close();
+    }
 
-  // Закрываем модальное окно.
-  orderDialog.close();
+    // Показываем уведомление об успешной отправке
+    if (successMessage) {
+      successMessage.hidden = false;
+      successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
 });
+
+// Динамическое обновление стоимости на отдельной странице заказа (order.html)
+const orderProductSelect = document.getElementById('order-product-select');
+if (orderProductSelect) {
+  const gameData = {
+    minecraft: { name: 'Minecraft Dungeons: Ultimate', price: '1 990 руб.' },
+    terraria: { name: 'Terraria (Лицензия)', price: '349 руб.' },
+    gta5: { name: 'Grand Theft Auto V: Premium', price: '1 490 руб.' },
+    witcher3: { name: 'Ведьмак 3: Дикая Охота', price: '890 руб.' },
+    cyberpunk: { name: 'Cyberpunk 2077 (Ultimate)', price: '2 190 руб.' },
+    hollowknight: { name: 'Hollow Knight (Лицензия)', price: '550 руб.' }
+  };
+
+  orderProductSelect.addEventListener('change', () => {
+    const val = orderProductSelect.value;
+    const summaryRows = document.querySelectorAll('.order-summary__row');
+    if (val && gameData[val] && summaryRows.length >= 5) {
+      // Название товара
+      summaryRows[0].querySelector('span:last-child').textContent = gameData[val].name;
+      // Стоимость
+      summaryRows[1].querySelector('span:last-child').textContent = gameData[val].price;
+      // Итого
+      summaryRows[4].querySelector('span:last-child').textContent = gameData[val].price;
+    }
+  });
+}
