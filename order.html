@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Страница оформления заказа в учебном интернет-магазине. Укажите ваши данные, выберите товар и способ получения.">
+  <title>Оформление заказа — Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body id="top">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html">Главная</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="catalog.html">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="product.html">Товар</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link site-nav__link--active" href="order.html">Оформить заказ</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="contacts.html">Контакты</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__current">Оформление заказа</span>
+    </nav>
+
+    <section class="section">
+      <h1>Оформление заказа</h1>
+      <p>
+        Заполните форму ниже для оформления заказа. Все обязательные поля отмечены для проверки валидации.
+      </p>
+
+      <div class="order-layout">
+        <!-- Форма заказа -->
+        <form class="order-form" id="order-form" action="#" method="post" novalidate>
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-name">Ваше имя *</label>
+            <input
+              class="order-form__input"
+              id="order-name"
+              name="name"
+              type="text"
+              placeholder="Иван Иванов"
+              minlength="2"
+              autocomplete="given-name"
+              aria-required="true"
+              required
+            >
+          </div>
+
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-email">Электронная почта *</label>
+            <input
+              class="order-form__input"
+              id="order-email"
+              name="email"
+              type="email"
+              placeholder="example@mail.ru"
+              autocomplete="email"
+              aria-required="true"
+              required
+            >
+          </div>
+
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-phone">Номер телефона *</label>
+            <input
+              class="order-form__input"
+              id="order-phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              placeholder="+7 (900) 000-00-00"
+              pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+              aria-describedby="order-phone-help"
+              aria-required="true"
+              required
+            >
+            <small class="order-form__help" id="order-phone-help">Формат: +7 (900) 000-00-00</small>
+          </div>
+
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-product-select">Выбранная игра *</label>
+            <select class="order-form__select" id="order-product-select" name="product" aria-required="true" required>
+              <option value="">-- Выберите игру из каталога --</option>
+              <option value="minecraft" selected>Minecraft Dungeons: Ultimate (1 990 руб.)</option>
+              <option value="terraria">Terraria (349 руб.)</option>
+              <option value="gta5">Grand Theft Auto V: Premium (1 490 руб.)</option>
+              <option value="witcher3">Ведьмак 3: Дикая Охота (890 руб.)</option>
+              <option value="cyberpunk">Cyberpunk 2077 (2 190 руб.)</option>
+              <option value="hollowknight">Hollow Knight (550 руб.)</option>
+            </select>
+          </div>
+
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-address">Адрес доставки</label>
+            <input
+              class="order-form__input"
+              id="order-address"
+              name="address"
+              type="text"
+              placeholder="г. Москва, ул. Профсоюзная, д. 1 (или цифровая доставка)"
+            >
+          </div>
+
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-date">Желаемая дата доставки</label>
+            <input
+              class="order-form__input"
+              id="order-date"
+              name="date"
+              type="date"
+            >
+          </div>
+
+          <div class="order-form__field">
+            <label class="order-form__label" for="order-comment">Комментарий к заказу</label>
+            <textarea
+              class="order-form__textarea"
+              id="order-comment"
+              name="comment"
+              rows="3"
+              placeholder="Укажите пожелания или промокод"
+            ></textarea>
+          </div>
+
+          <div class="order-form__field order-form__field--checkbox">
+            <label>
+              <input
+                class="order-form__checkbox"
+                id="order-agreement"
+                name="agreement"
+                type="checkbox"
+                aria-required="true"
+                required
+              >
+              Я согласен на обработку персональных данных *
+            </label>
+          </div>
+
+          <div class="order-form__actions">
+            <button class="button button--primary" type="submit">Подтвердить заказ</button>
+            <a class="button button--secondary" href="catalog.html">Вернуться в каталог</a>
+          </div>
+        </form>
+
+        <!-- Сводка заказа -->
+        <aside class="order-summary">
+          <h2 class="order-summary__title">Ваш заказ</h2>
+          
+          <div class="order-summary__row">
+            <span>Товар:</span>
+            <span>Minecraft Dungeons: Ultimate</span>
+          </div>
+
+          <div class="order-summary__row">
+            <span>Стоимость:</span>
+            <span>1 990 руб.</span>
+          </div>
+
+          <div class="order-summary__row">
+            <span>Доставка:</span>
+            <span style="color: var(--color-success); font-weight: 700;">Бесплатно (E-mail)</span>
+          </div>
+
+          <div class="order-summary__row">
+            <span>Гарантия:</span>
+            <span>12 месяцев</span>
+          </div>
+
+          <div class="order-summary__row order-summary__row--total">
+            <span>Итого к оплате:</span>
+            <span>1 990 руб.</span>
+          </div>
+
+          <div style="margin-top: var(--space-lg); font-size: 13px; color: var(--color-muted); line-height: 1.5;">
+            <p>✔ Оплата при получении картой или наличными</p>
+            <p>✔ Бесплатный возврат в течение 14 дней</p>
+            <p>✔ Проверка комплектации перед покупкой</p>
+          </div>
+        </aside>
+      </div>
+
+      <p class="success-message" id="success-message" hidden>
+        Заказ успешно принят! Номер заявки: #KR1-2026. Мы свяжемся с вами в течение 15 минут.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+      <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
+  </footer>
+
+  <!-- Фиксированная кнопка «Наверх» -->
+  <a class="scroll-top" href="#top" aria-label="Вернуться к началу страницы" title="Наверх">↑</a>
+</body>
+</html>

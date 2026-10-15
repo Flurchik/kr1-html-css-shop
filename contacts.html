@@ -1,71 +1,226 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Контактная информация учебного интернет-магазина.">
-        <title>Контакты — Учебный интернет-магазин</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <header class="site-header">
-            <div class="site-header__inner">
-                <a class="site-header__logo" href="index.html">ShopProject</a>
-                <nav class="site-nav" aria-label="Основная навигация">
-                    <ul class="site-nav__list">
-                        <li class="site-nav__item">
-                            <a class="site-nav__link" href="index.html">Главная</a>
-                        </li>
-                        <li class="site-nav__item">
-                            <a class="site-nav__link" href="catalog.html">Каталог</a>
-                        </li>
-                        <li class="site-nav__item">
-                            <a class="site-nav__link site-nav__link--active" href="contacts.html">Контакты</a>
-                        </li>
-                        <li class="site-nav__item">
-                            <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
-                        </li>
-                        <li class="site-nav__item">
-                            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
-                        </li>
-                        <li class="site-nav__item">
-                            <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <main>
-            <nav class="breadcrumbs" aria-label="Хлебные крошки">
-                <a class="breadcrumbs__link" href="index.html">Главная</a>
-                <span class="breadcrumbs__current">Контакты</span>
-            </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Контактная информация, график работы, адрес, форма обратной связи и ответы на частые вопросы (FAQ) учебного интернет-магазина.">
+  <title>Контакты и FAQ — Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body id="top">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html">Главная</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="catalog.html">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="product.html">Товар</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="order.html">Оформить заказ</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link site-nav__link--active" href="contacts.html">Контакты</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-            <section class="section">
-                <h1>Контакты</h1>
-                <p>
-                    Здесь размещается контактная информация учебного интернет-магазина.
-                </p>
+  <main>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__current">Контакты</span>
+    </nav>
 
-                <ul>
-                    <li>Телефон: +7 (900) 000-00-00</li>
-                    <li>E-mail: info@exmaple.com</li>
-                    <li>Адрес: г. Москва, учебный проект</li>
-                </ul>
-            </section>
+    <section class="section">
+      <h1>Контактная информация</h1>
+      <p>
+        Мы всегда рады ответить на ваши вопросы, помочь с выбором техники или оформлением заказа.
+      </p>
 
-            <section class="section" id="feedback">
-                <h2>Обратная связь</h2>
-                <p>
-                    Для отправки заявки используйте форму в модальном окне на главное странице.
-                </p>
-                <a class="button" href="index.html#contacts">Перейти к форме</a>
-            </section>
-        </main>
+      <div class="contacts-grid">
+        <div class="contacts-card">
+          <h3>Телефон</h3>
+          <p><a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
+          <small style="color: var(--color-muted);">Ежедневно с 9:00 до 21:00</small>
+        </div>
 
-        <footer>
-            <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-            <p>Дисциплина: Фронтенл и бэкенд разработка</p>
-        </footer>
-    </body>
+        <div class="contacts-card">
+          <h3>Электронная почта</h3>
+          <p><a href="mailto:info@example.com">info@example.com</a></p>
+          <small style="color: var(--color-muted);">Отвечаем в течение 1 часа</small>
+        </div>
+
+        <div class="contacts-card">
+          <h3>Офис и пункт выдачи</h3>
+          <p>г. Москва, ул. Профсоюзная, д. 1</p>
+          <small style="color: var(--color-muted);">Станция метро «Калужская»</small>
+        </div>
+
+        <div class="contacts-card">
+          <h3>Режим работы</h3>
+          <p>Пн–Пт: 09:00 – 20:00</p>
+          <p>Сб–Вс: 10:00 – 18:00</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Блок часто задаваемых вопросов (FAQ) -->
+    <section class="section faq" id="faq">
+      <h2>Часто задаваемые вопросы (FAQ)</h2>
+      <p>Здесь собраны ответы на самые популярные вопросы наших клиентов.</p>
+
+      <div class="faq__list">
+        <details class="faq__item" open>
+          <summary class="faq__question">Как оформить заказ на сайте?</summary>
+          <div class="faq__answer">
+            Выберите понравившийся товар в каталоге, нажмите кнопку «Заказать» для быстрой заявки
+            через модальное окно либо перейдите на страницу «Оформить заказ» для полного заполнения адреса доставки.
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">Какие способы оплаты поддерживаются?</summary>
+          <div class="faq__answer">
+            Вы можете оплатить заказ банковской картой онлайн, по QR-коду через СБП,
+            а также наличными или картой курьеру при получении после проверки комплектации.
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">Сколько времени занимает доставка?</summary>
+          <div class="faq__answer">
+            Доставка по Москве осуществляется в день заказа или на следующий день.
+            Доставка по регионам России занимает от 2 до 5 рабочих дней транспортной компанией.
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">Предоставляется ли официальная гарантия?</summary>
+          <div class="faq__answer">
+            Да, все товары являются официальными лицензионными версиями
+            и сопровождаются гарантией работоспособности и клиентской поддержкой.
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__question">Каковы условия возврата или обмена?</summary>
+          <div class="faq__answer">
+            В соответствии с законодательством РФ вы можете вернуть товар надлежащего качества
+            в течение 14 дней с момента получения при сохранении товарного вида и чека.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section class="section" id="feedback">
+      <h2>Форма обратной связи</h2>
+      <p>Остались вопросы? Заполните форму, и мы свяжемся с вами в ближайшее время.</p>
+
+      <form class="order-form" id="order-form" action="#" method="post" novalidate style="max-width: 600px;">
+        <div class="order-form__field">
+          <label class="order-form__label" for="contact-name">Ваше имя *</label>
+          <input
+            class="order-form__input"
+            id="contact-name"
+            name="name"
+            type="text"
+            placeholder="Иван"
+            autocomplete="name"
+            aria-required="true"
+            required
+            minlength="2"
+          >
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="contact-email">Ваш E-mail *</label>
+          <input
+            class="order-form__input"
+            id="contact-email"
+            name="email"
+            type="email"
+            placeholder="example@mail.ru"
+            autocomplete="email"
+            aria-required="true"
+            required
+          >
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="contact-topic">Тема сообщения</label>
+          <select class="order-form__select" id="contact-topic" name="topic">
+            <option value="question">Вопрос по ассортименту</option>
+            <option value="order_status">Статус заказа</option>
+            <option value="cooperation">Сотрудничество</option>
+            <option value="other">Другое</option>
+          </select>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="contact-message">Сообщение *</label>
+          <textarea
+            class="order-form__textarea"
+            id="contact-message"
+            name="message"
+            rows="4"
+            placeholder="Напишите ваш вопрос..."
+            aria-required="true"
+            required
+          ></textarea>
+        </div>
+
+        <div class="order-form__field order-form__field--checkbox">
+          <label>
+            <input
+              class="order-form__checkbox"
+              id="contact-agreement"
+              name="agreement"
+              type="checkbox"
+              aria-required="true"
+              required
+            >
+            Согласен на обработку персональных данных *
+          </label>
+        </div>
+
+        <div class="order-form__actions">
+          <button class="button button--primary" type="submit">Отправить сообщение</button>
+        </div>
+      </form>
+
+      <p class="success-message" id="success-message" hidden>
+        Спасибо! Ваше сообщение отправлено. Мы ответим вам в течение 1 часа.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+      <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
+  </footer>
+
+  <!-- Фиксированная кнопка «Наверх» -->
+  <a class="scroll-top" href="#top" aria-label="Вернуться к началу страницы" title="Наверх">↑</a>
+</body>
 </html>

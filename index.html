@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Учебный интернет-магазин</title>
+  <meta name="description" content="GameShop — учебный интернет-магазин лицензионных цифровых ключей для компьютерных игр: Minecraft, Terraria, GTA V и других хитов.">
+  <title>Главная — Магазин видеоигр GameShop</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
-<body>
+<body id="top">
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -18,6 +19,12 @@
           </li>
           <li class="site-nav__item">
             <a class="site-nav__link" href="catalog.html">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="product.html">Товар</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="order.html">Оформить заказ</a>
           </li>
           <li class="site-nav__item">
             <a class="site-nav__link" href="contacts.html">Контакты</a>
@@ -38,108 +45,170 @@
 
   <main>
     <section class="hero">
-      <h1>Учебный интернет-магазин</h1>
+      <h1>Магазин видеоигр GameShop</h1>
       <p>
-        Это стартовая страница учебного frontend-проекта.
-        В дальнейшем на её основе будет разработан многостраничный сайт
-        интернет-магазина или каталога услуг.
+        Добро пожаловать в учебный интернет-магазин лицензионных видеоигр.
+        Здесь собраны мировые хиты: Minecraft, Terraria, Grand Theft Auto V и многие другие.
+        Моментальная цифровая доставка ключей на E-mail сразу после оформления заказа.
       </p>
-      <a class="button" href="#popular">Перейти к товарам</a>
+      <div class="hero__actions">
+        <a class="button button--primary" href="catalog.html">Перейти в каталог игр</a>
+        <a class="button button--secondary" href="#popular">Смотреть популярное</a>
+      </div>
     </section>
 
     <section class="section" id="advantages">
-      <h2>Преимущества проекта</h2>
-      <ul class="advantages-list">
-        <li>понятная HTML-структура;</li>
-        <li>семантические блоки страницы;</li>
-        <li>подключение внешнего CSS-файла;</li>
-        <li>подготовка к разработке многостраничного сайта.</li>
+      <h2>Преимущества нашего магазина</h2>
+      <ul class="advantages-grid">
+        <li class="advantages-card">
+          <h3>Моментальная доставка</h3>
+          <p>Цифровой ключ активации отправляется на указанный e-mail в течение нескольких минут.</p>
+        </li>
+        <li class="advantages-card">
+          <h3>Лицензионные ключи</h3>
+          <p>Все игры активируются в официальных сервисах: Steam, Microsoft Store, Rockstar Games.</p>
+        </li>
+        <li class="advantages-card">
+          <h3>Круглосуточная поддержка</h3>
+          <p>Помощь в установке и активации ключей в режиме 24/7 без выходных.</p>
+        </li>
+        <li class="advantages-card">
+          <h3>Гарантия возврата</h3>
+          <p>Гарантия работоспособности каждого ключа или 100% возврат средств.</p>
+        </li>
       </ul>
     </section>
 
     <section class="section" id="popular">
-      <h2>Популярные товары</h2>
+      <h2>Популярные игры</h2>
       
       <div class="products-grid">
+        <!-- Minecraft Dungeons -->
         <article class="product-card product-card--featured">
-          <h3 class="product-card__title">Товар 1</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 1000 руб.</p>
-          <button class="button product-card__button" type="button" data-product="Товар 1">
-            Заказать
-          </button>
+          <span class="product-card__badge product-card__badge--hit">Хит продаж</span>
+          <div class="product-card__image-wrapper">
+            <img class="product-card__image" src="images/minecraft.jpg" alt="Обложка игры Minecraft Dungeons" width="300" height="180" loading="lazy">
+          </div>
+          <h3 class="product-card__title">Minecraft Dungeons</h3>
+          <p class="product-card__description">Экшен-RPG во вселенной Minecraft: зачистка подземелий, артефакты и кооператив.</p>
+          <div class="product-card__price-box">
+            <p class="product-card__price">1 990 руб.</p>
+            <span class="product-card__old-price">2 490 руб.</span>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary product-card__button" href="product.html">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-product="Minecraft Dungeons">
+              Купить
+            </button>
+          </div>
         </article>
 
-        <article class="product-card">
-          <h3 class="product-card__title">Товар 2</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 1500 руб.</p>
-          <button class="button product-card__button" type="button" data-product="Товар 2">
-            Заказать
-          </button>
+        <!-- Terraria -->
+        <article class="product-card product-card--discount">
+          <span class="product-card__badge product-card__badge--discount">Скидка -20%</span>
+          <div class="product-card__image-wrapper">
+            <img class="product-card__image" src="images/terraria.jpg" alt="Обложка игры Terraria" width="300" height="180" loading="lazy">
+          </div>
+          <h3 class="product-card__title">Terraria</h3>
+          <p class="product-card__description">Культовая 2D-песочница с сотнями боссов, крафтом и приключениями.</p>
+          <div class="product-card__price-box">
+            <p class="product-card__price product-card__price--discount">349 руб.</p>
+            <span class="product-card__old-price">435 руб.</span>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary product-card__button" href="product.html">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-product="Terraria">
+              Купить
+            </button>
+          </div>
         </article>
 
+        <!-- GTA 5 -->
         <article class="product-card">
-          <h3 class="product-card__title">Товар 3</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 2000 руб.</p>
-          <button class="button product-card__button" type="button" data-product="Товар 3">
-            Заказать
-          </button>
+          <span class="product-card__badge product-card__badge--hit">Топ продаж</span>
+          <div class="product-card__image-wrapper">
+            <img class="product-card__image" src="images/gta5.jpg" alt="Обложка игры GTA 5" width="300" height="180" loading="lazy">
+          </div>
+          <h3 class="product-card__title">Grand Theft Auto V: Premium</h3>
+          <p class="product-card__description">Сюжетная кампания в Лос-Сантосе и доступ к миру GTA Online.</p>
+          <div class="product-card__price-box">
+            <p class="product-card__price">1 490 руб.</p>
+          </div>
+          <div class="product-card__actions">
+            <a class="button button--secondary product-card__button" href="product.html">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-product="Grand Theft Auto V: Premium Edition">
+              Купить
+            </button>
+          </div>
         </article>
       </div>
     </section>
 
     <aside class="aside-info">
-      <h2>Информация для студентов</h2>
+      <h2>Информация для проверки</h2>
       <p>
-        На следующих практических занятиях этот проект будет расширяться:
-        появятся формы, модальное окно, дополнительные страницы, Flex/Grid,
-        БЭМ-структура и адаптивная версия сайта.
+        Проект выполнен в рамках Контрольной работы №1 по дисциплине «Фронтенд и бэкенд разработка».
+        Включает семантическую разметку, БЭМ, Flexbox, CSS Grid, sticky-фильтр, модальное окно и валидацию.
       </p>
     </aside>
   </main>
 
-  <footer id="contacts">
-    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+  <footer class="site-footer" id="contacts">
+    <div class="site-footer__inner">
+      <p class="site-footer__text">&copy; 2026 GameShop. Учебный проект интернет-магазина видеоигр.</p>
+      <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
   </footer>
 
+  <!-- Модальное окно быстрого оформления покупки -->
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+    <div class="order-dialog__header">
+      <div>
+        <h2 class="order-dialog__title" id="order-dialog-title">Быстрое оформление покупки</h2>
+        <p class="order-dialog__subtitle">
+          Выбранная игра:
+          <span class="order-dialog__product-badge" id="dialog-product-name">Minecraft Dungeons</span>
+        </p>
+      </div>
+      <button class="order-dialog__close" type="button" aria-label="Закрыть окно">&times;</button>
+    </div>
 
     <form class="order-form" id="order-form" action="#" method="post" novalidate>
-      <input id="selected-product" name="selected-product" type="hidden">
+      <input id="selected-product" name="selected-product" type="hidden" value="Minecraft Dungeons: Ultimate Edition">
 
       <div class="order-form__field">
-        <label class="order-form__label" for="order-name">Имя</label>
+        <label class="order-form__label" for="order-name">Ваше имя *</label>
         <input
           class="order-form__input"
           id="order-name"
           name="name"
           type="text"
-          placeholder="Введите ваше имя"  
+          placeholder="Введите ваше имя"
           minlength="2"
           autocomplete="given-name"
+          aria-required="true"
           required
         >
       </div>
 
       <div class="order-form__field">
-        <label class="order-form__label" for="order-email">E-mail</label>
+        <label class="order-form__label" for="order-email">E-mail для получения ключа *</label>
         <input
           class="order-form__input"
           id="order-email"
           name="email"
           type="email"
-          placeholder="example@mail.ru"
+          placeholder="your-email@mail.ru"
           autocomplete="email"
+          aria-describedby="order-email-help"
+          aria-required="true"
           required
         >
+        <small class="order-form__help" id="order-email-help">На этот адрес придёт лицензионный ключ активации</small>
       </div>
 
       <div class="order-form__field">
-        <label class="order-form__label" for="order-phone">Телефон</label>
+        <label class="order-form__label" for="order-phone">Номер телефона *</label>
         <input
           class="order-form__input"
           id="order-phone"
@@ -148,39 +217,30 @@
           inputmode="tel"
           placeholder="+7 (900) 000-00-00"
           pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+          aria-describedby="order-phone-help"
+          aria-required="true"
           required
         >
-        <small class="order-form__help">Формат: +7 (900) 000-00-00</small>
+        <small class="order-form__help" id="order-phone-help">Формат: +7 (900) 000-00-00</small>
       </div>
 
       <div class="order-form__field">
-        <label class="order-form__label" for="order-date">Дата связи</label>
-        <input
-          class="order-form__input"
-          id="order-date"
-          name="date"
-          type="date"
-        >
-      </div>
-
-      <div class="order-form__field">
-        <label class="order-form__label" for="order-topic">Тема заявки</label>
+        <label class="order-form__label" for="order-topic">Способ оплаты</label>
         <select class="order-form__select" id="order-topic" name="topic" required>
-          <option value="">Выберите тему</option>
-          <option value="product">Заказ товара</option>
-          <option value="consultation">Консультация</option>
-          <option value="delivery">Доставка</option>
+          <option value="sbp" selected>Система быстрых платежей (СБП)</option>
+          <option value="card">Банковская карта (МИР / Visa / MC)</option>
+          <option value="wallet">Электронный кошелёк</option>
         </select>
       </div>
 
       <div class="order-form__field">
-        <label class="order-form__label" for="order-comment">Комментарий</label>
+        <label class="order-form__label" for="order-comment">Комментарий к заказу</label>
         <textarea
           class="order-form__textarea"
           id="order-comment"
           name="comment"
-          rows="4"
-          placeholder="Укажите дополнительную информацию"
+          rows="3"
+          placeholder="Укажите никнейм или промокод, если есть"
         ></textarea>
       </div>
 
@@ -191,21 +251,25 @@
             id="order-agreement"
             name="agreement"
             type="checkbox"
+            aria-required="true"
             required
           >
-          Я согласен на обработку данных
+          Согласен с правилами предоставления услуг и обработки данных *
         </label>
       </div>
 
       <div class="order-form__actions">
         <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
-        <button class="button button--primary" type="submit">Отправить заявку</button>
+        <button class="button button--primary" type="submit">Получить ключ</button>
       </div>
     </form>
   </dialog>
 
-<p class="success-message" id="success-message" hidden>
-  Форма успешно отправлена!
-</p>
+  <p class="success-message" id="success-message" hidden>
+    Заказ успешно оформлен! Лицензионный ключ активации отправлен на вашу электронную почту.
+  </p>
+
+  <!-- Фиксированная кнопка «Наверх» -->
+  <a class="scroll-top" href="#top" aria-label="Вернуться к началу страницы" title="Наверх">↑</a>
 </body>
 </html>
