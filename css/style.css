@@ -102,8 +102,10 @@ a:focus-visible {
 .button--primary:hover,
 .button--primary:focus {
   color: var(--color-white);
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-success);
   text-decoration: none;
+  box-shadow: 0 8px 24px var(--color-success, 0.5);
+  transform: translateY(-2px);
 }
 
 .button:active,
@@ -123,8 +125,10 @@ a:focus-visible {
 .button--secondary:hover,
 .button--secondary:focus {
   color: var(--color-white);
-  background-color: var(--color-primary);
+  background-color: var(--color-danger);
   text-decoration: none;
+  box-shadow: 0 8px 24px var(--color-danger, 0.5);
+  transform: translateY(-2px);
 }
 
 .button--secondary:active {
@@ -324,9 +328,10 @@ a:focus-visible {
 }
 
 .product-card:hover {
-  border-color: var(--color-primary);
-  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
-  transform: translateY(-4px);
+  border-color: var(--color-danger);
+  box-shadow: 0 8px 24px var(--color-danger);
+  background-color: color-mix(in srgb, var(--color-danger) 50%, transparent);
+  transform: translateY(-8px);
 }
 
 .product-card:focus-within {
